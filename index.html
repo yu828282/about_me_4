@@ -3,32 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume_4</title>
+    <title>Professional Resume</title>
     <style>
         body {
             margin: 0;
+            padding: 0;
             background-color: #264956;
             color: #333;
         }
-        .header {
+        header {
             display: flex;
+            align-items: center;
             background-color: #fff;
-            border-bottom: 7px solid #E76F51;
+            border-bottom: 3px solid #E76F51;
         }
-        .header img {
+        header img {
             width: 120px;
             height: 120px;
             padding: 10px;
         }
-        .header h1 {
+        header h1 {
             color: #E76F51;
         }
+        #change-bg-button{
+            text-align: right;
+            padding: 15px;
+        }
         .container {
-            width: 900px;
-            margin: 70px auto;
+            max-width: 900px;
+            margin: 4rem auto;
             background: white;
             border-radius: 8px;
-            padding: 25px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .section {
             padding-bottom: 20px;
@@ -45,11 +52,12 @@
             margin: 5px;
         }
         ul {
-            padding-left: 20px;
+            list-style-type: none;
+            padding: 0;
         }        
         footer {
             text-align: center;
-            padding: 15px;
+            padding: 1rem;
             background-color: #E76F51;
             color: white;
         }
@@ -61,33 +69,39 @@
             color: white;
             border: none;
             border-radius: 4px;
+            cursor: pointer;
         }
         button:hover {
             background-color: #cb5f43;
         }
         a {
-            text-decoration: none;
             color: #E76F51;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #E76F51;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="header">
+    <header>
         <img src="profile.png" alt="Profile Picture">
         <div>
             <h1>John Doe</h1>
             <hr>
+            <div id="change-bg-button">🌘</div><!-- JavaScript (change background color) -->
         </div>
-    </div>
+    </header>
     <div class="container">
         <div class="section">
-            <!-- About me section -->
             <div class="section-title">About Me</div>            
-            <p>Hello! I'm <strong>John Doe</strong>,</p>
-            <p>a passionate web developer with a love for creating elegant and efficient solutions. I have experience in building responsive and user-friendly websites.</p>
+            <p>Hello! I'm <strong>John Doe,</strong></p>
+            <p id="animatedText"></p><!-- JavaScript (typing effect) -->     
+            <!-- <p>a passionate web developer with a love for creating elegant and efficient solutions. I have experience in building responsive and user-friendly websites.</p> -->
         </div>
+        <!-- Skills Section -->
         <div class="section">
-            <!-- Skills section -->
             <div class="section-title">Skills</div>
             <div class="skills">
                 <p>                    
@@ -98,32 +112,64 @@
                 </p>
             </div>
         </div>
+        <!-- Experience Section -->
         <div class="section">
-            <!-- Experience section -->
             <div class="section-title">Experience</div>
             <ul>
                 <li><strong>Developer</strong>  at ABC Corp (2021 - Present)</li>
                 <li><strong>Junior Developer</strong> at XYZ Inc (2019 - 2021)</li>
             </ul>
         </div>
+        <!-- Education Section -->
         <div class="section">
-            <!-- Education section -->
             <div class="section-title">Education</div>
             <p>Bachelor's in Computer Science, University of Technology (2015 - 2019)</p>
         </div>
+        <!-- Achievement Section -->
         <div class="section">
-            <!-- Contact section -->
             <div class="section-title">Contact</div>            
-            <div class="section-content">
+            <ul class="section-content">
                 <p><span>Email : </span> <a href="mailto:john.doe@example.com" target="_blank">john.doe@example.com</a></p>
                 <p><span>Phone : </span> <a href="tel:0104567890" target="_blank">(+82) 010-456-7890</a></p>
                 <p><span>Linkedin : </span> <a href="https://linkedin.com/in/johndoe" target="_blank">linkedin.com/in/johndoe</a></p>
-            </div>
+            </ul>
         </div>            
-        <button>Click to contact me</button>
+        <!-- JavaScript(email button) -->
+        <button type="button" onclick="location.href='mailto:john.doe@example.com'">Click to contact me</button>
     </div>
     <footer>
-        <p>&copy; 2025 John Doe. All rights reserved.</p>
+        <p>&copy; 2025 Terrance B. Palmer. All rights reserved.</p>
     </footer>
+    <script>        
+        // typing effect
+        let text = "a passionate web developer with a love for creating elegant and efficient solutions. I have experience in building responsive and user-friendly websites.";
+        let textElement = document.getElementById("animatedText");
+
+        let index = 0;
+
+        function typeText() {
+            if (index < text.length) {
+            textElement.textContent += text[index];
+            index++;
+            setTimeout(typeText, 50); // 50 ms
+            }
+        }
+        typeText();
+        
+        //change background color
+        let button = document.getElementById('change-bg-button');
+        let isOriginalColor = true;
+
+        button.addEventListener('click', () => {
+            if (isOriginalColor){
+                document.body.style.backgroundColor = '#7c53a8';
+            }else{
+                document.body.style.backgroundColor = '#264956';
+            }
+            isOriginalColor = !isOriginalColor;
+        });
+
+
+    </script>
 </body>
 </html>
